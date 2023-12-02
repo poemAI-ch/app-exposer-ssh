@@ -1,5 +1,5 @@
 FROM ubuntu:latest
-RUN apt-get update && apt-get install -y openssh-server
+RUN apt-get update && apt-get install -y openssh-server dumb-init
 # Configure SSH
 RUN mkdir /var/run/sshd
 RUN echo 'root:redhat' | chpasswd
@@ -11,6 +11,8 @@ RUN echo "GatewayPorts yes" >> /etc/ssh/sshd_config
 COPY start_outside_tunnel.sh /start_outside_tunnel.sh
 
 EXPOSE 22
+
+ENTRYPOINT ["/usr/bin/dumb-init", "--"]
 
 # Start SSH server
 CMD ["sh", "/start_outside_tunnel.sh"]
