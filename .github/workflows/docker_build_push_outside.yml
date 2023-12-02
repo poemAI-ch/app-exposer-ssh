@@ -26,7 +26,7 @@ jobs:
         run: |
           PROJECT_NAME="${GITHUB_REPOSITORY#*/}"
           COMMIT_HASH_SHORT=$(echo "${{ github.sha }}" | cut -c1-7)
-          IMAGE_BASE_NAME="${DOCKER_HUB_USERNAME}/${PROJECT_NAME}_outside"
+          IMAGE_BASE_NAME="${DOCKER_HUB_USERNAME}/${PROJECT_NAME}-outside"
           echo "IMAGE_BASE_NAME=${IMAGE_BASE_NAME}"
 
           IMAGE_LATEST_NAME=${IMAGE_BASE_NAME}:latest
