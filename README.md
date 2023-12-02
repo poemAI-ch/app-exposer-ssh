@@ -11,7 +11,7 @@ App-Exposer-SSH is an open-source solution designed to securely expose internal 
 
 App-Exposer-SSH is designed to provide a secure and flexible way to expose internal services, such as web servers or APIs, to the internet without the need for direct inbound internet access. This solution is particularly useful in environments where services are running behind firewalls or in isolated network environments, such as Kubernetes clusters without external IP addresses.
 
-### Use Cases
+### Use Cases
 
 - Behind Firewalls: For services running within a network protected by a firewall, App-Exposer-SSH allows these services to be accessed externally without the need to configure firewall rules or open inbound ports.
 
