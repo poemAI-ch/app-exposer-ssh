@@ -20,5 +20,6 @@ fi
 chmod 600 /root/.ssh/id_rsa
 
 # Start the SSH tunnel
-echo Starting inside tunnel with ssh -o StrictHostKeyChecking=no -p ${TUNNEL_SSH_PORT} -i /root/.ssh/id_rsa -N -R "${TUNNEL_OUTSIDE_PORT}:${TUNNEL_INSIDE_HOST}:${TUNNEL_INSIDE_PORT}" ${TUNNEL_USER}@$TUNNEL_OUTSIDE_HOST
-ssh -o StrictHostKeyChecking=no -p ${TUNNEL_SSH_PORT} -i /root/.ssh/id_rsa -N -R "${TUNNEL_OUTSIDE_PORT}:${TUNNEL_INSIDE_HOST}:${TUNNEL_INSIDE_PORT}" ${TUNNEL_USER}@$TUNNEL_OUTSIDE_HOST
+echo Starting inside tunnel with ssh -o StrictHostKeyChecking=no -p ${TUNNEL_SSH_PORT} -t -i /root/.ssh/id_rsa -N -R "${TUNNEL_OUTSIDE_PORT}:${TUNNEL_INSIDE_HOST}:${TUNNEL_INSIDE_PORT}" ${TUNNEL_USER}@$TUNNEL_OUTSIDE_HOST ${TUNNEL_COMMAND}
+ssh -o StrictHostKeyChecking=no -p ${TUNNEL_SSH_PORT} -t -i /root/.ssh/id_rsa -N -R "${TUNNEL_OUTSIDE_PORT}:${TUNNEL_INSIDE_HOST}:${TUNNEL_INSIDE_PORT}" ${TUNNEL_USER}@$TUNNEL_OUTSIDE_HOST ${TUNNEL_COMMAND}
+
