@@ -19,7 +19,10 @@ fi
 
 chmod 600 /root/.ssh/id_rsa
 
+# Expand the TUNNEL_COMMAND to replace environment variables
+EXPANDED_TUNNEL_COMMAND=$(eval echo "${TUNNEL_COMMAND}")
+
 # Start the SSH tunnel
-echo Starting inside tunnel with ssh -o StrictHostKeyChecking=no -p ${TUNNEL_SSH_PORT} -t -i /root/.ssh/id_rsa -N -R "${TUNNEL_OUTSIDE_PORT}:${TUNNEL_INSIDE_HOST}:${TUNNEL_INSIDE_PORT}" ${TUNNEL_USER}@$TUNNEL_OUTSIDE_HOST ${TUNNEL_COMMAND}
-ssh -o StrictHostKeyChecking=no -p ${TUNNEL_SSH_PORT} -t -i /root/.ssh/id_rsa -N -R "${TUNNEL_OUTSIDE_PORT}:${TUNNEL_INSIDE_HOST}:${TUNNEL_INSIDE_PORT}" ${TUNNEL_USER}@$TUNNEL_OUTSIDE_HOST ${TUNNEL_COMMAND}
+echo Starting inside tunnel with ssh -o StrictHostKeyChecking=no -p ${TUNNEL_SSH_PORT} -t -i /root/.ssh/id_rsa -N -R "${TUNNEL_OUTSIDE_PORT}:${TUNNEL_INSIDE_HOST}:${TUNNEL_INSIDE_PORT}" ${TUNNEL_USER}@$TUNNEL_OUTSIDE_HOST ${EXPANDED_TUNNEL_COMMAND}
+ssh -o StrictHostKeyChecking=no -p ${TUNNEL_SSH_PORT} -t -i /root/.ssh/id_rsa -N -R "${TUNNEL_OUTSIDE_PORT}:${TUNNEL_INSIDE_HOST}:${TUNNEL_INSIDE_PORT}" ${TUNNEL_USER}@$TUNNEL_OUTSIDE_HOST ${EXPANDED_TUNNEL_COMMAND}
 
